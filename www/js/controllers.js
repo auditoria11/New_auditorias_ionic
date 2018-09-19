@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('auditoriaApp.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
