@@ -1,0 +1,47 @@
+<ion-view view-title=" Editar Union">
+  <ion-content>
+    <ion-list>
+
+
+
+   
+   
+
+
+  <div  class="list">
+     <form ng-submit="ActualizarUniones(creatar_union)">
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label"><b>Nombre:</b></span>
+        <input type="text" placeholder="Nombre" ng-model="creatar_union.nombre" >
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"><b>Alias:</b></span>
+        <input type="text" ng-model="creatar_union.alias" placeholder="Alias">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"><b>Codigo:</b></span>
+        <input type="text"  ng-model="creatar_union.codigo" placeholder="Codigo"> 
+      </label>
+
+     
+
+       <div class="center">
+            <input class="button button-block button-assertive" type="button" ng-click="CancelarActualizarUniones()" value="Cancelar">
+            <input class="button button-block button-positive" type="submit" value="Actualizar Union">
+       </div>
+          
+
+      </form>
+
+  </div>
+
+
+    
+
+   
+
+   
+    </ion-list>
+  </ion-content>
+</ion-view>

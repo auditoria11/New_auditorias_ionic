@@ -1,0 +1,70 @@
+<ion-view view-title="Asociaciones">
+  <ion-content>
+    <ion-list>
+
+
+
+
+    <button ng-click="VerCrearAsociacion()" class="button button-block button-positive">Crear</button>
+
+
+
+  <div ng-show="VermostrandoCrearAsociacion" class="list">
+     <form ng-submit="Insertar_asociaciones(crear_asociacion)">
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label"><b>Nombre:</b></span>
+        <input type="text" placeholder="Nombre" ng-model="crear_asociacion.nombre" >
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"><b>Alias:</b></span>
+        <input type="text" ng-model="crear_asociacion.alias" placeholder="Alias">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"><b>Codigo:</b></span>
+        <input type="text"  ng-model="crear_asociacion.codigo" placeholder="Codigo"> 
+      </label>
+
+      <label class="item item-input item-select"><b>Unión:</b>
+         <select id="station-select" ng-model="crear_asociacion.union">
+         
+           <option ng-repeat="union in uniones" value="{{union.rowid}}">{{union.nombre}} {{union.alias}}</option>
+        </select>
+        
+
+      </label>
+
+   
+
+       <div class="center">
+            <input class="button button-block button-assertive" type="button" ng-click="CancelarCrearAsociacion()" value="Cancelar">
+            <input class="button button-block button-positive" type="submit" value="Guardar Asociación">
+       </div>
+          
+
+      </form>
+
+  </div>
+
+
+    <ion-item class="item-remove-animate " ng-repeat="asociation in asociaciones"  href="#/tab/asociaciones/{{asociation.rowid}}">
+            
+            <h2>  <b>Nombre:</b>  {{asociation.nombre}}</h2>
+            <h2>  <b>Alias: </b>  {{asociation.alias}}</h2>
+            <h2>  <b>Codigo:</b>  {{asociation.codigo}}</h2>
+             <h2>  <b>Union:</b>  {{asociation.nombre_union + '  ' + asociation.alias_union}}</h2>
+           
+          
+
+        <ion-option-button class="button-assertive" ng-click="EliminarAsociacion(asociation)">
+              Eliminar
+        </ion-option-button>
+    </ion-item>
+
+  
+
+   
+    </ion-list>
+  </ion-content>
+</ion-view>
+

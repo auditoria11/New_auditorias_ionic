@@ -1,0 +1,36 @@
+<ion-view view-title="Login" name="login-view">
+  <ion-content class="padding">
+      <div class="list">
+
+
+
+        <center> 
+          <img src="imagenes/logoiglesia.png" style="width: 300px" > 
+        </center>
+
+       
+
+        
+
+
+         <form ng-submit="entrar(user)">
+             <label class="item item-input item-floating-label">
+              <span class="input-label"><b>Usuario:</b></span>
+                <input type="text" placeholder="Usuario" ng-model="user.username">
+            </label>
+            <label class="item item-input item-floating-label">
+              <span class="input-label"><b>Contraseña:</b></span>
+                <input type="password" placeholder="Contraseña" ng-model="user.password">
+            </label>
+
+            <button  type="submit" class="button button-block button-calm" >Ingresar</button>
+
+               
+
+         </form>
+          
+      </div>
+      
+  </ion-content>
+</ion-view>
+

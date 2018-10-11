@@ -21,8 +21,27 @@ angular.module('auditoriaApp.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope) {
+.controller('AccountCtrl', function($scope, $state) {
   $scope.settings = {
     enableFriends: true
+
+
   };
+
+
+  $scope.cerrar_sesion = function(){
+      localStorage.logueado   = false
+            delete localStorage.USER;
+            $state.go('login');
+
+             return result;
+
+
+
+    
+       
+    }
+
+
+
 });

@@ -1,0 +1,56 @@
+<ion-view view-title=" Editar Asociación">
+  <ion-content>
+    <ion-list>
+
+
+
+   
+   
+
+
+  <div  class="list">
+     <form ng-submit="ActualizarAsociaciones(crear_asociacion)">
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label"><b>Nombre:</b></span>
+        <input type="text" placeholder="Nombre" ng-model="crear_asociacion.nombre" >
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"><b>Alias:</b></span>
+        <input type="text" ng-model="crear_asociacion.alias" placeholder="Alias">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"><b>Codigo:</b></span>
+        <input type="text"  ng-model="crear_asociacion.codigo" placeholder="Codigo"> 
+      </label>
+
+      <label class="item item-input item-select"><b>Unión:</b>
+         <select id="station-select" ng-model="crear_asociacion.union">
+         
+           <option ng-repeat="union in uniones" value="{{union.rowid}}">{{union.nombre}} {{union.alias}}</option>
+        </select>
+        
+
+      </label>
+
+     
+
+       <div class="center">
+            <input class="button button-block button-assertive" type="button" ng-click="CancelarActualizarAsociaciones()" value="Cancelar">
+            <input class="button button-block button-positive" type="submit" value="Actualizar Asociación">
+       </div>
+          
+
+      </form>
+
+  </div>
+
+
+    
+
+   
+
+   
+    </ion-list>
+  </ion-content>
+</ion-view>

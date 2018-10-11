@@ -1,0 +1,80 @@
+<ion-view view-title="Distritos">
+  <ion-content>
+    <ion-list>
+
+
+
+
+    <button ng-click="VerCrearDistrito()" class="button button-block button-positive">Crear</button>
+
+
+
+  <div ng-show="vercreandodistrito" class="list">
+     <form ng-submit="Insertar_distritos(creatar_distrito)">
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label"><b>Nombre:</b></span>
+        <input type="text" placeholder="Nombre" ng-model="creatar_distrito.nombre" >
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"><b>Alias:</b></span>
+        <input type="text" ng-model="creatar_distrito.alias" placeholder="Alias">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"><b>Codigo:</b></span>
+        <input type="text"  ng-model="creatar_distrito.codigo" placeholder="Codigo"> 
+      </label>
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label"><b>Zona:</b></span>
+        <input type="text"  ng-model="creatar_distrito.zona" placeholder="Zona"> 
+      </label>
+
+
+       <label class="item item-input item-select"><b>Pastor:</b>
+         <select id="station-select" ng-model="creatar_distrito.pastor">
+           <option ng-repeat="usuario in usuarios" value="{{usuario.rowid}}">{{usuario.nombres}} {{usuario.apellidos}} </option>
+        </select>
+      
+
+      </label>
+
+
+
+    
+
+       <div class="center">
+            <input class="button button-block button-assertive" type="button" ng-click="CancelarCrearDistrito()" value="Cancelar">
+            <input class="button button-block button-positive" type="submit" value="Guardar Distrito">
+       </div>
+          
+
+      </form>
+
+  </div>
+
+
+    <ion-item class="item-remove-animate " ng-repeat="distrito in distritos"  href="#/tab/distritos/{{distrito.rowid}}">
+            
+            <h2>{{distrito.nombre}}</h2>
+            <h2>{{distrito.alias}}</h2>
+            <h2>{{distrito.codigo}}</h2>
+            <h2>{{distrito.zona}}</h2>
+            <h2>{{distrito.pastor_nombres +' '+  distrito.pastor_apellidos }}</h2>
+            
+           
+
+        <ion-option-button class="button-assertive" ng-click="EliminarDistrito(distrito)">
+              Eliminar
+        </ion-option-button>
+    </ion-item>
+
+
+   
+
+   
+    </ion-list>
+  </ion-content>
+</ion-view>
+
+

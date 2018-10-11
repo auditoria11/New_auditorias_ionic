@@ -1,0 +1,67 @@
+<ion-view view-title="Editar Distritos">
+  <ion-content>
+    <ion-list>
+
+
+
+
+   
+
+
+
+  <div  class="list">
+     <form ng-submit="ActualizarDistrito(creatar_distrito)">
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label"><b>Nombre:</b></span>
+        <input type="text" placeholder="Nombre" ng-model="creatar_distrito.nombre" >
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"><b>Alias:</b></span>
+        <input type="text" ng-model="creatar_distrito.alias" placeholder="Alias">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label"><b>Codigo:</b></span>
+        <input type="text"  ng-model="creatar_distrito.codigo" placeholder="Codigo"> 
+      </label>
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label"><b>Zona:</b></span>
+        <input type="text"  ng-model="creatar_distrito.zona" placeholder="Zona"> 
+      </label>
+
+
+       <label class="item item-input item-select"><b>Pastor:</b>
+         <select id="station-select" ng-model="creatar_distrito.pastor">
+           <option ng-repeat="usuario in usuarios" value="{{usuario.rowid}}">{{usuario.nombres}} {{usuario.apellidos}} </option>
+        </select>
+      
+
+      </label>
+
+
+
+    
+
+       <div class="center">
+            <input class="button button-block button-assertive" type="button" ng-click="CancelarActualizarDistritos()" value="Cancelar">
+            <input class="button button-block button-positive" type="submit" value="Actualizar Distrito">
+       </div>
+          
+
+      </form>
+
+  </div>
+
+
+    
+
+
+   
+
+   
+    </ion-list>
+  </ion-content>
+</ion-view>
+
+

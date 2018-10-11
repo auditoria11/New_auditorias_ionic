@@ -74,6 +74,44 @@ angular.module('auditoriaApp', ['ionic', 'auditoriaApp.controllers', 'auditoriaA
       }
     })
 
+  .state('tab.iglesias', {
+      url: '/iglesias',
+      views: {
+        'tab-iglesias': {
+          templateUrl: 'templates/tab-iglesias.html',
+          controller: 'iglesiasCtrl'
+        }
+      }
+    })
+
+
+  .state('tab.distritos', {
+      url: '/distritos',
+      views: {
+        'tab-distritos': {
+          templateUrl: 'templates/tab-distritos.html',
+          controller: 'distritosCtrl'
+        }
+      }
+    })
+
+
+  .state('tab.asociaciones', {
+      url: '/asociaciones',
+      views: {
+        'tab-asociaciones': {
+          templateUrl: 'templates/tab-asociaciones.html',
+          controller: 'asociacionesCtrl'
+        }
+      }
+    })
+
+  .state('login', {
+      url: '/login',
+      templateUrl: 'templates/Login.html',
+      controller: 'LoginCtrl'
+  })
+
     .state('tab.chat-detail', {
       url: '/chats/:chatId',
       views: {
@@ -83,6 +121,39 @@ angular.module('auditoriaApp', ['ionic', 'auditoriaApp.controllers', 'auditoriaA
         }
       }
     })
+
+    .state('tab.tab-editar-uniones', {
+      url: '/uniones/:unionId',
+      views: {
+        'tab-uniones': {
+          templateUrl: 'templates/tab-editar-uniones.html',
+          controller: 'EditarUnionesCtrl'
+        }
+      }
+    })
+
+
+       .state('tab.tab-editar-distritos', {
+      url: '/distritos/:distritoId',
+      views: {
+        'tab-distritos': {
+          templateUrl: 'templates/tab-editar-distritos.html',
+          controller: 'EditarDistritosCtrl'
+        }
+      }
+    })
+    
+
+     .state('tab.tab-editar-asociaciones', {
+      url: '/asociaciones/:asociacionId',
+      views: {
+        'tab-asociaciones': {
+          templateUrl: 'templates/tab-editar-asociaciones.html',
+          controller: 'EditarAsociacionesCtrl'
+        }
+      }
+    })
+
 
   .state('tab.account', {
     url: '/account',
