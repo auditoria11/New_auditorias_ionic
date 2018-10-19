@@ -2,6 +2,9 @@ angular.module("auditoriaApp")
 .controller("unionesCtrl", function($scope, ConexionServ, $filter, $ionicPopup) {
 
 
+
+
+    $scope.creatar_union ={};
  
 
 	$scope.traerDatos = function() {
@@ -18,23 +21,90 @@ angular.module("auditoriaApp")
 	$scope.traerDatos();
 
 	 $scope.inserter_union = function(creatar_union) {
-		consulta = "INSERT INTO uniones(nombre, alias, codigo) VALUES(?,?,?)";
 
-		ConexionServ.query(consulta, [creatar_union.nombre, creatar_union.alias, creatar_union.codigo]).then(function(result) {
-			           
+	 	 if (creatar_union.nombre == undefined || creatar_union.nombre =='' ) {
+		 	
 
-			$scope.traerDatos();
-
-			$scope.showAlert = function() {
 			   var alertPopup = $ionicPopup.alert({
-			     title: 'Union creada',
-			     template: 'se ha creado una nueva union co'
+			     title: 'Error al crear unión ',
+			     template: 'Es necesario que complete el campo Nombre'
 			   });
 
 			   alertPopup.then(function(res) {
 			     console.log('Thank you for not eating my delicious ice cream cone');
 			   });
-			};
+
+		 	return;
+
+
+
+		 	
+
+		 }
+
+
+		 	 if (creatar_union.alias == undefined || creatar_union.alias =='' ) {
+		 	
+
+			   var alertPopup = $ionicPopup.alert({
+			     title: 'Error al crear unión ',
+			     template: 'Es necesario que complete el campo Alias'
+			   });
+
+			   alertPopup.then(function(res) {
+			     console.log('Thank you for not eating my delicious ice cream cone');
+			   });
+
+		 	return;
+
+
+		 };
+
+
+		  if (creatar_union.codigo == undefined || creatar_union.codigo =='') {
+		 	
+
+			   var alertPopup = $ionicPopup.alert({
+			     title: 'Error al crear unión ',
+			     template: 'Es necesario que complete el campo código'
+			   });
+
+			   alertPopup.then(function(res) {
+			     console.log('Thank you for not eating my delicious ice cream cone');
+			   });
+
+		 	return;
+
+
+		 };
+
+
+
+		consulta = "INSERT INTO uniones(nombre, alias, codigo) VALUES(?,?,?)";
+
+		ConexionServ.query(consulta, [creatar_union.nombre, creatar_union.alias, creatar_union.codigo]).then(function(result) {
+			           
+
+			
+        
+
+			   var alertPopup = $ionicPopup.alert({
+			     title: 'Union creada',
+			     template: 'se ha creado una nueva unión'
+			   });
+
+			   alertPopup.then(function(res) {
+			     console.log('Thank you for not eating my delicious ice cream cone');
+			   });
+		
+
+              
+
+		  $scope.traerDatos();
+
+
+		
+		
 
 			
 		}, function(tx) {
@@ -83,6 +153,12 @@ angular.module("auditoriaApp")
 
       });
 	};
+
+
+	
+
+
+
 
 
 

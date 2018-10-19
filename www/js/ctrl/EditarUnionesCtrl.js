@@ -3,23 +3,29 @@ angular.module("auditoriaApp")
 
  
 
-     
+      $scope.actuali_union = {};
 
      $scope.traerDatos = function() {
 	// Traemos Uniones
-		consulta = "SELECT rowid, nombre, alias, codigo, division_id from uniones";
+		consulta = "SELECT rowid, nombre, alias, codigo from uniones";
 		ConexionServ.query(consulta, []).then(function(result) {
 			$scope.uniones = result;
 		}, function(tx) {
 				console.log("Error no es posbile traer Uniones", tx);
 		});
 
+
+
+
 	}; 
+
+
+
 
 	// Traemos Uniones
 		consulta = "SELECT rowid,* from uniones WHERE rowid = ?";
 		ConexionServ.query(consulta, [$stateParams.unionId]).then(function(result) {
-				$scope.creatar_union = result[0];
+				$scope.actuali_union = result[0];
 				
 		}, function(tx) {
 				console.log("Error no es posbile traer Uniones", tx);
@@ -27,13 +33,79 @@ angular.module("auditoriaApp")
 
 
 
+		
+
+
 		 $scope.ActualizarUniones = function(actuali_union) {
+
+
+
+		 	 if (actuali_union.nombre == undefined || actuali_union.nombre =='' ) {
+		 	
+
+			   var alertPopup = $ionicPopup.alert({
+			     title: 'Error al Editar unión ',
+			     template: 'Es necesario que complete el campo Nombre'
+			   });
+
+			   alertPopup.then(function(res) {
+			     console.log('Thank you for not eating my delicious ice cream cone');
+			   });
+
+		 	return;
+	 	
+
+			 }
+
+
+			  if (actuali_union.alias == undefined || actuali_union.alias =='' ) {
+		 	
+
+			   var alertPopup = $ionicPopup.alert({
+			     title: 'Error al Editar unión ',
+			     template: 'Es necesario que complete el campo Alias'
+			   });
+
+			   alertPopup.then(function(res) {
+			     console.log('Thank you for not eating my delicious ice cream cone');
+			   });
+
+		 	return;
+	 	
+
+			 }
+
+
+			 if (actuali_union.codigo == undefined || actuali_union.codigo =='' ) {
+		 	
+
+			   var alertPopup = $ionicPopup.alert({
+			     title: 'Error al Editar unión ',
+			     template: 'Es necesario que complete el campo código'
+			   });
+
+			   alertPopup.then(function(res) {
+			     console.log('Thank you for not eating my delicious ice cream cone');
+			   });
+
+		 	return;
+	 	
+
+			 }
+
+
 		consulta = "UPDATE  uniones SET nombre=?, alias=?, codigo=?  WHERE rowid=? "; 
 		ConexionServ.query(consulta, [ actuali_union.nombre, actuali_union.alias, actuali_union.codigo, actuali_union.rowid ]).then( function(result) {
-		 
+		   
+	     
+
+
+
+	      $scope.traerDatos(); 
+
+
  			console.log("Union Actualizada", result);
 
- 			$scope.traerDatos(); 
 
 						
 		$state.go('tab.uniones');
@@ -47,6 +119,10 @@ angular.module("auditoriaApp")
 		   alertPopup.then(function() {
 		     console.log('Thank you for not eating my delicious ice cream cone');
 		   });
+
+
+
+
 
 
 			

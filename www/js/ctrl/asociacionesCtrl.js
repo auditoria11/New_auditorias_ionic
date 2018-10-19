@@ -1,7 +1,7 @@
 angular.module("auditoriaApp")
 .controller("asociacionesCtrl", function($scope, ConexionServ, $filter, $ionicPopup) {
 
-
+ $scope.crear_asociacion = {};
  
 
 	$scope.traerDatos = function() {
@@ -29,11 +29,74 @@ angular.module("auditoriaApp")
 
 	$scope.traerDatos();
 
-	$scope.Insertar_asociaciones = function(creater_asociaciones) {
-		console.log(creater_asociaciones);
+	$scope.Insertar_asociaciones = function(crear_asociacion) {
+		console.log(crear_asociacion);
+
+		if (crear_asociacion.nombre == undefined || crear_asociacion.nombre =='' ) {
+		 	
+
+			   var alertPopup = $ionicPopup.alert({
+			     title: 'Error al crear Asociación ',
+			     template: 'Es necesario que complete el campo nombre'
+			   });
+
+			   alertPopup.then(function(res) {
+			     console.log('Thank you for not eating my delicious ice cream cone');
+			   });
+
+		 	return;
+
+		 	 }
+
+		 if (crear_asociacion.alias == undefined || crear_asociacion.alias =='' ) {
+		 	
+
+			   var alertPopup = $ionicPopup.alert({
+			     title: 'Error al crear Asociación ',
+			     template: 'Es necesario que complete el campo Alias'
+			   });
+
+			   alertPopup.then(function(res) {
+			     console.log('Thank you for not eating my delicious ice cream cone');
+			   });
+
+		 	return;
+
+		 	 }
+		 if (crear_asociacion.codigo == undefined || crear_asociacion.codigo =='' ) {
+		 	
+
+			   var alertPopup = $ionicPopup.alert({
+			     title: 'Error al crear Asociación ',
+			     template: 'Es necesario que complete el campo codigo'
+			   });
+
+			   alertPopup.then(function(res) {
+			     console.log('Thank you for not eating my delicious ice cream cone');
+			   });
+
+		 	return;
+
+		 	 }
+
+		if (crear_asociacion.union == undefined || crear_asociacion.union =='' ) {
+		 	
+
+			   var alertPopup = $ionicPopup.alert({
+			     title: 'Error al crear Asociación ',
+			     template: 'Es necesario que complete el campo union'
+			   });
+
+			   alertPopup.then(function(res) {
+			     console.log('Thank you for not eating my delicious ice cream cone');
+			   });
+
+		 	return;
+
+		 	 }
 		consulta = "INSERT INTO asociaciones(nombre, alias, codigo, union_id) VALUES(?,?,?,?)";
 
-		ConexionServ.query(consulta, [ creater_asociaciones.nombre, creater_asociaciones.alias, creater_asociaciones.codigo, creater_asociaciones.union ]).then( function(result) {
+		ConexionServ.query(consulta, [ crear_asociacion.nombre, crear_asociacion.alias, crear_asociacion.codigo, crear_asociacion.union ]).then( function(result) {
 			$scope.traerDatos();
 
 			$scope.showAlert = function() {

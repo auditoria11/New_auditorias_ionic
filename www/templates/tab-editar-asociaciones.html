@@ -9,23 +9,23 @@
 
 
   <div  class="list">
-     <form ng-submit="ActualizarAsociaciones(crear_asociacion)">
+     <form ng-submit="ActualizarAsociaciones(actuali_asociation)">
 
       <label class="item item-input item-floating-label">
         <span class="input-label"><b>Nombre:</b></span>
-        <input type="text" placeholder="Nombre" ng-model="crear_asociacion.nombre" >
+        <input type="text" placeholder="Nombre" ng-model="actuali_asociation.nombre" >
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label"><b>Alias:</b></span>
-        <input type="text" ng-model="crear_asociacion.alias" placeholder="Alias">
+        <input type="text" ng-model="actuali_asociation.alias" placeholder="Alias">
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label"><b>Codigo:</b></span>
-        <input type="text"  ng-model="crear_asociacion.codigo" placeholder="Codigo"> 
+        <input type="text"  ng-model="actuali_asociation.codigo" placeholder="Codigo"> 
       </label>
 
       <label class="item item-input item-select"><b>Unión:</b>
-         <select id="station-select" ng-model="crear_asociacion.union">
+         <select id="station-select" ng-model="actuali_asociation.union">
          
            <option ng-repeat="union in uniones" value="{{union.rowid}}">{{union.nombre}} {{union.alias}}</option>
         </select>

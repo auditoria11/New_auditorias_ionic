@@ -10,29 +10,29 @@
 
 
   <div  class="list">
-     <form ng-submit="ActualizarDistrito(creatar_distrito)">
+     <form ng-submit="ActualizarDistrito(distrito)">
 
       <label class="item item-input item-floating-label">
         <span class="input-label"><b>Nombre:</b></span>
-        <input type="text" placeholder="Nombre" ng-model="creatar_distrito.nombre" >
+        <input type="text" placeholder="Nombre" ng-model="distrito.nombre" >
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label"><b>Alias:</b></span>
-        <input type="text" ng-model="creatar_distrito.alias" placeholder="Alias">
+        <input type="text" ng-model="distrito.alias" placeholder="Alias">
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label"><b>Codigo:</b></span>
-        <input type="text"  ng-model="creatar_distrito.codigo" placeholder="Codigo"> 
+        <input type="text"  ng-model="distrito.codigo" placeholder="Codigo"> 
       </label>
 
       <label class="item item-input item-floating-label">
         <span class="input-label"><b>Zona:</b></span>
-        <input type="text"  ng-model="creatar_distrito.zona" placeholder="Zona"> 
+        <input type="text"  ng-model="distrito.zona" placeholder="Zona"> 
       </label>
 
 
        <label class="item item-input item-select"><b>Pastor:</b>
-         <select id="station-select" ng-model="creatar_distrito.pastor">
+         <select id="station-select" ng-model="distrito.pastor">
            <option ng-repeat="usuario in usuarios" value="{{usuario.rowid}}">{{usuario.nombres}} {{usuario.apellidos}} </option>
         </select>
       

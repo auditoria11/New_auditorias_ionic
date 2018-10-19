@@ -1,7 +1,19 @@
 angular.module("auditoriaApp")
-.controller("iglesiasCtrl", function($scope, ConexionServ, $filter, $ionicPopup) {
+.controller("EditarIglesiasCtrl", function($scope, ConexionServ, $filter, $ionicPopup, $stateParams, $state) {
 
-   $scope.crear_iglesia = {}
+
+	$scope.iglesia = {};
+
+   
+
+   // Traemos iglesias
+		consulta = "SELECT rowid,* from iglesias WHERE rowid = ?";
+		ConexionServ.query(consulta, [$stateParams.iglesiaId]).then(function(result) {
+				$scope.iglesia = result[0];
+				console.log('eeeeee', $scope.crear_iglesia);
+		}, function(tx) {
+				console.log("Error no es posbile traer Iglesias", tx);
+		});
 
      $scope.traerDatos = function() {
 	// Traemos IGLESIAS
@@ -45,13 +57,14 @@ angular.module("auditoriaApp")
 
 
 
-  $scope.InsertarIglesias = function(iglesia) {
-		
- 		if (iglesia.nombre == undefined || iglesia.nombre =='' ) {
+  $scope.ActualizarIglesia = function(iglesia) {
+
+
+  	  	if (iglesia.nombre == undefined || iglesia.nombre =='' ) {
 		 	
 
 			   var alertPopup = $ionicPopup.alert({
-			     title: 'Error al crear Iglesia ',
+			     title: 'Error al editar Iglesia ',
 			     template: 'Es necesario que complete el campo nombre'
 			   });
 
@@ -67,7 +80,7 @@ angular.module("auditoriaApp")
 		 	
 
 			   var alertPopup = $ionicPopup.alert({
-			     title: 'Error al crear Iglesia ',
+			     title: 'Error al editar Iglesia ',
 			     template: 'Es necesario que complete el campo alias'
 			   });
 
@@ -84,7 +97,7 @@ angular.module("auditoriaApp")
 		 	
 
 			   var alertPopup = $ionicPopup.alert({
-			     title: 'Error al crear Iglesia ',
+			     title: 'Error al editar Iglesia ',
 			     template: 'Es necesario que complete el campo codigo'
 			   });
 
@@ -100,7 +113,7 @@ angular.module("auditoriaApp")
 		 	
 
 			   var alertPopup = $ionicPopup.alert({
-			     title: 'Error al crear Iglesia ',
+			     title: 'Error al editar Iglesia ',
 			     template: 'Es necesario que complete el campo distrito'
 			   });
 
@@ -116,7 +129,7 @@ angular.module("auditoriaApp")
 		 	
 
 			   var alertPopup = $ionicPopup.alert({
-			     title: 'Error al crear Iglesia ',
+			     title: 'Error al editar Iglesia ',
 			     template: 'Es necesario que complete el campo zona'
 			   });
 
@@ -132,7 +145,7 @@ angular.module("auditoriaApp")
 		 	
 
 			   var alertPopup = $ionicPopup.alert({
-			     title: 'Error al crear Iglesia ',
+			     title: 'Error al editar Iglesia ',
 			     template: 'Es necesario que complete el campo tesorero'
 			   });
 
@@ -143,22 +156,22 @@ angular.module("auditoriaApp")
 		 	return;
 
 		 	 }
+		
+		 consulta = "UPDATE iglesias SET nombre=?, alias=?, codigo=?,  distrito_id=?, zona=?, tesorero_id=? WHERE rowid=? ";
 
-		consulta = "INSERT INTO iglesias(nombre, alias, codigo, distrito_id, zona, tesorero_id) VALUES(?,?,?,?,?,?)";
-
-			ConexionServ.query(consulta, [iglesia.nombre, iglesia.alias, iglesia.codigo, iglesia.distrito, iglesia.zona, iglesia.tesorero]).then(function(result) {
+			ConexionServ.query(consulta, [iglesia.nombre, iglesia.alias, iglesia.codigo, iglesia.distrito, iglesia.zona, iglesia.tesorero, iglesia.rowid]).then(function(result) {
 			$scope.traerDatos();
+			$state.go('tab.iglesias')
 
-			$scope.showAlert = function() {
 			   var alertPopup = $ionicPopup.alert({
-			     title: 'Iglesia creada creada',
-			     template: 'se ha creado una nueva Iglesia'
+			     title: 'Iglesia Actualizada ',
+			     template: 'se ha actualizado una nueva Iglesia'
 			   });
 
 			   alertPopup.then(function(res) {
 			     console.log('Thank you for not eating my delicious ice cream cone');
 			   });
-			};
+			
 
 			
 		}, function(tx) {
@@ -167,45 +180,15 @@ angular.module("auditoriaApp")
     };
 
 
-    $scope.VerCrearIglesias = function(){
-      $scope.VerCreandoIglesias = true;
+    $scope.CancelarActualizarIglesia = function(){
+    	$state.go('tab.iglesias');
+
     };
 
-    $scope.CancelarCrearIglesias = function(){
-      $scope.VerCreandoIglesias = false;
-    };
+   
+	
 
-
-
-    $scope.EliminarIglesia = function(iglesia) {
-	   var confirmPopup = $ionicPopup.confirm({
-         title: 'Eliminar Iglesia' ,
-         template: '¿Esta seguro de Eliminar esa Iglesia?'
-      });
-
-	  
-
-      confirmPopup.then(function(res) {
-         if(res) 
-		if (res == true) {
-			consulta = "DELETE FROM iglesias WHERE rowid=? ";
-
-			ConexionServ.query(consulta, [iglesia.rowid]).then(function(result) {
-				console.log("iglesia  eliminida", result);
-				$scope.iglesias = $filter("filter")($scope.iglesias, {rowid: "!" + iglesia.rowid});
-				$scope.focusOnValorNew = true;
-			},function(tx) {
-				console.log(
-				"No se pudo Eliminar la iglesia que quiere eliminar ",
-				tx
-				);
-			});
-      	}
-
-      });
-	};
-
-
+	
   
   
   

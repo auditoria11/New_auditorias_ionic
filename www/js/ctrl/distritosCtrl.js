@@ -1,5 +1,8 @@
 angular.module("auditoriaApp")
 .controller("distritosCtrl", function($scope, ConexionServ, $filter, $ionicPopup) {
+
+
+	$scope.distrito = {};
   
 
   $scope.traerDatos = function() {
@@ -45,6 +48,87 @@ angular.module("auditoriaApp")
 	};
 
 	$scope.Insertar_distritos = function(distrito) {
+
+		 if (distrito.nombre == undefined || distrito.nombre =='' ) {
+		 	
+
+			   var alertPopup = $ionicPopup.alert({
+			     title: 'Error al crear Distrito ',
+			     template: 'Es necesario que complete el campo Nombre'
+			   });
+
+			   alertPopup.then(function(res) {
+			     console.log('Thank you for not eating my delicious ice cream cone');
+			   });
+
+		 	return;
+
+		 	 }
+
+		 if (distrito.alias == undefined || distrito.alias =='' ) {
+		 	
+
+			   var alertPopup = $ionicPopup.alert({
+			     title: 'Error al crear Distrito ',
+			     template: 'Es necesario que complete el campo Alias'
+			   });
+
+			   alertPopup.then(function(res) {
+			     console.log('Thank you for not eating my delicious ice cream cone');
+			   });
+
+		 	return;
+
+		 	 }
+    	if (distrito.codigo == undefined || distrito.codigo =='' ) {
+		 	
+
+			   var alertPopup = $ionicPopup.alert({
+			     title: 'Error al crear Distrito ',
+			     template: 'Es necesario que complete el campo codigo'
+			   });
+
+			   alertPopup.then(function(res) {
+			     console.log('Thank you for not eating my delicious ice cream cone');
+			   });
+
+		 	return;
+
+		 	 }
+		 if (distrito.zona == undefined || distrito.zona =='' ) {
+		 	
+
+			   var alertPopup = $ionicPopup.alert({
+			     title: 'Error al crear Distrito ',
+			     template: 'Es necesario que complete el campo zona'
+			   });
+
+			   alertPopup.then(function(res) {
+			     console.log('Thank you for not eating my delicious ice cream cone');
+			   });
+
+		 	return;
+
+		 }
+
+		if (distrito.pastor == undefined || distrito.pastor =='' ) {
+		 	
+
+			   var alertPopup = $ionicPopup.alert({
+			     title: 'Error al crear Distrito ',
+			     template: 'Es necesario que complete el campo pastor'
+			   });
+
+			   alertPopup.then(function(res) {
+			     console.log('Thank you for not eating my delicious ice cream cone');
+			   });
+
+		 	return;
+
+		 	 }
+
+
+
 		
 		consulta = "INSERT INTO distritos(nombre, alias, codigo, zona, pastor_id, tesorero_id) VALUES(?,?,?,?,?,?)";
 
@@ -58,7 +142,7 @@ angular.module("auditoriaApp")
 			   });
 
 			   alertPopup.then(function(res) {
-			     console.log('Thank you for not eating my delicious ice cream cone');
+			     console.log('Thank you for eating my delicious ice cream cone');
 			   });
 			};
 

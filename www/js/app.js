@@ -85,6 +85,8 @@ angular.module('auditoriaApp', ['ionic', 'auditoriaApp.controllers', 'auditoriaA
     })
 
 
+
+
   .state('tab.distritos', {
       url: '/distritos',
       views: {
@@ -128,6 +130,16 @@ angular.module('auditoriaApp', ['ionic', 'auditoriaApp.controllers', 'auditoriaA
         'tab-uniones': {
           templateUrl: 'templates/tab-editar-uniones.html',
           controller: 'EditarUnionesCtrl'
+        }
+      }
+    })
+
+     .state('tab.tab-editar-iglesias', {
+      url: '/iglesias/:iglesiaId',
+      views: {
+        'tab-iglesias': {
+          templateUrl: 'templates/tab-editar-iglesias.html',
+          controller: 'EditarIglesiasCtrl'
         }
       }
     })

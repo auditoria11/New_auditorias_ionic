@@ -5,31 +5,57 @@
 
 
 
-    <button ng-click="VerCrearUnion()" class="button button-block button-positive">Crear</button>
+    <button ng-click="VerCrearIglesias()" class="button button-block button-positive">Crear</button>
 
 
 
-  <div ng-show="VermostrandoCrearUnion" class="list">
-     <form ng-submit="inserter_union(creatar_union)">
+  <div ng-show="VerCreandoIglesias" class="list">
+     <form ng-submit="InsertarIglesias(crear_iglesia)">
 
       <label class="item item-input item-floating-label">
         <span class="input-label"><b>Nombre:</b></span>
-        <input type="text" placeholder="Nombre" ng-model="creatar_union.nombre" >
+        <input type="text" placeholder="Nombre" ng-model="crear_iglesia.nombre" >
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label"><b>Alias:</b></span>
-        <input type="text" ng-model="creatar_union.alias" placeholder="Alias">
+        <input type="text" ng-model="crear_iglesia.alias" placeholder="Alias">
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label"><b>Codigo:</b></span>
-        <input type="text"  ng-model="creatar_union.codigo" placeholder="Codigo"> 
+        <input type="text"  ng-model="crear_iglesia.codigo" placeholder="Codigo"> 
       </label>
+
+       <label class="item item-input item-select"><b>Distrito:</b>
+         <select id="station-select" ng-model="crear_iglesia.distrito">
+         
+           <option ng-repeat="distrito in distritos" value="{{distrito.rowid}}">{{distrito.nombre}} {{distrito.alias}}</option>
+        </select>
+        
+
+      </label>
+
+      
+       <label class="item item-input item-floating-label">
+        <span class="input-label"><b>Zona:</b></span>
+        <input type="text"  ng-model="crear_iglesia.zona" placeholder="Zona"> 
+      </label>
+
+       <label class="item item-input item-select"><b>Tesorero:</b>
+         <select id="station-select" ng-model="crear_iglesia.tesorero">
+         
+           <option ng-repeat="usuario in usuarios" value="{{usuario.rowid}}">{{usuario.nombres}} {{usuario.apellidos}}</option>
+        </select>
+        
+
+      </label>
+
+
 
      
 
        <div class="center">
-            <input class="button button-block button-assertive" type="button" ng-click="CancelarCrearUnion()" value="Cancelar">
-            <input class="button button-block button-positive" type="submit" value="Guardar Union">
+            <input class="button button-block button-assertive" type="button" ng-click="CancelarCrearIglesias()" value="Cancelar">
+            <input class="button button-block button-positive" type="submit" value="Guardar Iglesia">
        </div>
           
 
@@ -38,15 +64,18 @@
   </div>
 
 
-    <ion-item class="item-remove-animate " ng-repeat="union in uniones"  href="#/tab/uniones/{{union.rowid}}">
+    <ion-item class="item-remove-animate " ng-repeat="iglesia in iglesias"  href="#/tab/iglesias/{{iglesia.rowid}}">
             
-            <h2>{{union.nombre}}</h2>
-            <h2>{{union.alias}}</h2>
-            <h2>{{union.codigo}}</h2>
-            
+            <h2> <b>Nombre: </b> {{iglesia.nombre}}</h2>
+            <h2> <b>Alias: </b> {{iglesia.alias}}</h2>
+            <h2> <b>Codigo: </b> {{iglesia.codigo}}</h2>
+            <h2> <b>Distrito: </b> {{iglesia.distrito_nombre + ' '+ iglesia.distrito_alias}}</h2>
+            <h2> <b>Zona: </b> {{iglesia.zona}}</h2>
+            <h2> <b>Tesorero: </b> {{iglesia.tesorero_nombres +' '+ iglesia.tesorero_apellidos }}</h2>
+
            
 
-        <ion-option-button class="button-assertive" ng-click="EliminarUnion(union)">
+        <ion-option-button class="button-assertive" ng-click="EliminarIglesia(iglesia)">
               Eliminar
         </ion-option-button>
     </ion-item>
