@@ -1,13 +1,10 @@
 angular.module("auditoriaApp")
 .controller("unionesCtrl", function($scope, ConexionServ, $filter, $ionicPopup) {
 
+  
+  
 
-
-
-    $scope.creatar_union ={};
- 
-
-	$scope.traerDatos = function() {
+  $scope.traerDatos = function() {
 	// Traemos Uniones
 		consulta = "SELECT rowid, nombre, alias, codigo, division_id from uniones";
 		ConexionServ.query(consulta, []).then(function(result) {
@@ -18,7 +15,14 @@ angular.module("auditoriaApp")
 
 	};
 
-	$scope.traerDatos();
+		$scope.traerDatos();
+
+ 
+    $scope.creatar_union ={};
+ 
+
+	
+
 
 	 $scope.inserter_union = function(creatar_union) {
 
